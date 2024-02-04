@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/CommunityPlugin-master.CommunityPlugin.main.iml" filepath="$PROJECT_DIR$/.idea/modules/CommunityPlugin-master.CommunityPlugin.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/CommunityPlugin.main.iml" filepath="$PROJECT_DIR$/.idea/modules/CommunityPlugin.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ru.community.CommunityPlugin.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ru.community.CommunityPlugin.main.iml" />
+    </modules>
+  </component>
+</project>
