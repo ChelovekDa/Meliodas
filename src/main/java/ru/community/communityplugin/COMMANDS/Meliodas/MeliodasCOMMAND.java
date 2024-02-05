@@ -1,34 +1,32 @@
-package ru.community.communityplugin.COMMANDS;
-
+package ru.community.communityplugin.COMMANDS.Meliodas;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;
+import ru.community.communityplugin.data.meliodasData;
 
 public class MeliodasCOMMAND implements CommandExecutor {
-
-    public boolean activeTrigger = false;
 
     private final String weaponsActive = "The Community's magic weapons are active!";
     private final String weaponsDisActive = "The Community's magic weapons are dis active!";
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-        if (activeTrigger == false & sender.isOp()) {
-            activeTrigger = true;
-            sender.sendMessage(this.weaponsActive);
-            System.out.println("OnTrigger is: " + activeTrigger);
+        var trigger = new meliodasData();
+
+        if (!trigger.getActiveTrigger() & sender.isOp()) {
+            trigger.setActiveTrigger(true);
+            sender.sendMessage(weaponsActive);
+            return true;
         }
         else {
-            activeTrigger = false;
-            sender.sendMessage(this.weaponsDisActive);
-            System.out.println("OnTrigger is: " + activeTrigger);
+            trigger.setActiveTrigger(false);
+            sender.sendMessage(weaponsDisActive);
         }
-        return activeTrigger;
+
+        return trigger.getActiveTrigger();
     }
 
-    public boolean returnTrigger() {
-        return activeTrigger;
-    }
+
 }

@@ -1,7 +1,7 @@
 package ru.community.communityplugin;
 
 import org.bukkit.plugin.java.JavaPlugin;
-import ru.community.communityplugin.COMMANDS.MeliodasCOMMAND;
+import ru.community.communityplugin.Backlife.backEventListener;
 
 public final class CommunityPlugin extends JavaPlugin {
 
@@ -9,7 +9,8 @@ public final class CommunityPlugin extends JavaPlugin {
     public void onEnable()
     {
         getServer().getPluginManager().registerEvents(new Events(), this);
-        getServer().getPluginCommand("meliodas").setExecutor(new MeliodasCOMMAND());
+        //getServer().getPluginCommand("meliodas").setExecutor(new MeliodasCOMMAND());
+        getServer().getPluginManager().registerEvents(new backEventListener(), this);
     }
 
 
