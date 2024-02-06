@@ -7,5 +7,5 @@ First func: Full Counter.
   The ability's 'Full Counter' owns an anime's main hero - Meliodas.
   I wanted to create this ability in Minecraft, but I'm understood that is unreal. I have to thought.. And I had an idea! The ability 'Full Counter' has a mini-ability 'Revening Counter" and I wanted to create her.
 
-  Revening Counter - that is ability's return all attacks from once enemy.
+  Revening Counter - that is ability's return all attacks from once enemy. During the fight all attacks accumulate from once enemy and will return to the enemy for a one strike.
 
