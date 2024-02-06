@@ -4,5 +4,5 @@ The plugin has two funcs.
 
 First func: Full Counter.
   Full Counter - that is one of more abilities, which allows to reflect the enemy's attack in double power.
-  The ability 'full counter' to own a anime's main hero - Meliodas.
+  The ability 'full counter' own a anime's main hero - Meliodas.
 
