@@ -38,11 +38,15 @@ public class Events implements Listener {
 //        var trigger = new meliodasData();
 //        System.out.println("onPlayerDamage is active with activeTrigger on: " + trigger.getActiveTrigger());
 //        if (trigger.getActiveTrigger()) {
-        if (event.getDamager().getType() == EntityType.PLAYER & event.getDamager().isOp()) {
-            TimeUnit.SECONDS.sleep(2);
-            if (event.getEntity().getType() == EntityType.PLAYER) {
-                broadMethods.damagePlayer((Player) event.getEntity(), 1000000);
-            } else broadMethods.killEntity(event.getEntity());
+        if (event.getDamager().getType() == EntityType.PLAYER) {
+            if (event.getDamager().isOp()) {
+                TimeUnit.SECONDS.sleep(2);
+                if (event.getEntity().getType() == EntityType.PLAYER) {
+                    broadMethods.damagePlayer((Player) event.getEntity(), 1000000);
+                } else broadMethods.killEntity(event.getEntity()); }
+            else {
+                System.out.println("[onPlayerDamage] Damager is not have a op!");
+            }
         } else {
             System.out.println("[onPlayerDamage] Damager is not a player!");
         }
