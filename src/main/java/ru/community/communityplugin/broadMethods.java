@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class broadMethods {
 
-    public static void killEntity(Entity entity) {
+    public void killEntity(Entity entity) {
         entity.remove();
     }
 
@@ -19,12 +19,15 @@ public class broadMethods {
         return time;
     }
 
-    public static void damagePlayer(Player player, int damage) {
+    public void damagePlayer(Player player, int damage) {
         player.damage(damage);
     }
 
-    public static double takenDamage(Entity entity) {
+    public double takenDamage(Entity entity) {
         var data = new meliodasData();
+
+        System.out.println("TAKEN:\n" + data.getDamageHistory() + "\n" + data.getTargetsHistory() + "\n" + data.getDamagerHistory() + "\n" + data.getEventsTimeHistory());
+
         ArrayList<Integer> indexes = new ArrayList<>();
         ArrayList<Entity> localTargets = data.getTargetsHistory();
 
@@ -39,13 +42,14 @@ public class broadMethods {
         }
 
         //Подсчет атаки
-        int result = 0;
+        double result = 0;
         for (int i = 0; i < indexes.size(); i++) {
             int index = indexes.get(i);
             result += data.getDamageHistory().get(index);
             indexes.remove(i);
         }
 
+        System.out.println("result = " + result);
         return result;
     }
 
@@ -59,19 +63,31 @@ public class broadMethods {
         int summ = targetIndex + damageIndex + damagerIndex;
         var times = data.getEventsTimeHistory();
 
-        if (summ == -3) addToData(damage, target, damager);
-        if (summ > -3) addToData(damage, target, damager);
+        if (summ == -3) addToData(damage, target, damager, time);
+        if (summ > -3) addToData(damage, target, damager, time);
         if (summ >= 3) {
-            if (times.indexOf(time) == -1) addToData(damage, target, damager);
+            if (times.indexOf(time) == -1) addToData(damage, target, damager, time);
             if (times.indexOf(time) >= 0) System.out.println("Ignoring the log..");
         }
     }
 
-    private void addToData(double damage, Entity target, Player damager) {
+    private String mess(ArrayList list) {
+        String mes = "";
+
+        for (int i = 0; i < list.size(); i++) {
+            mes = mes + ", [" + list.get(i) + "]";
+        }
+        return mes;
+    }
+
+    private void addToData(double damage, Entity target, Player damager, int time) {
         var data = new meliodasData();
         data.addToDamagerHistory(damager);
         data.addToDamageHistory(damage);
         data.addToTargetsHistory(target);
-        System.out.println("Added a new log.");
+        data.addToEventsTimeHistory(time);
+        //System.out.println("Added a new log.");
+        //System.out.println("OLD:\n" + data.getDamageHistory() + "\n" + data.getTargetsHistory() + "\n" + data.getDamagerHistory() + "\n" + data.getEventsTimeHistory());
+        System.out.println("OLD:\n" + mess(data.getDamageHistory()) + "\n" + mess(data.getTargetsHistory()) + "\n" + mess(data.getDamagerHistory()) + "\n" + mess(data.getEventsTimeHistory()));
     }
 }

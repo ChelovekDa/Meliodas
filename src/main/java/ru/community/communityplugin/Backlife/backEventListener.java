@@ -1,5 +1,6 @@
 package ru.community.communityplugin.Backlife;
 
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -13,12 +14,9 @@ public class backEventListener implements Listener {
 
     @EventHandler
     public void onEntityDamageEntity(EntityDamageByEntityEvent event) {
+        String message = String.valueOf(event.getDamage());
+        Bukkit.broadcastMessage("damage = " + message);
         methods.addHistoryToMeliodasData(event.getDamage(), event.getEntity(), (Player) event.getDamager(), methods.getWorldTime(event.getEntity()));
-    }
-
-    @EventHandler
-    public void onEntityTakenDamage(EntityDamageEvent event) {
-        methods.addHistoryToMeliodasData(event.getDamage(), event.getEntity(), null, methods.getWorldTime(event.getEntity()));
     }
 
 }

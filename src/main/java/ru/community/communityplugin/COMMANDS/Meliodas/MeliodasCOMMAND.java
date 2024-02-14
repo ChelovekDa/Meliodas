@@ -15,7 +15,7 @@ public class MeliodasCOMMAND implements CommandExecutor {
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         var trigger = new meliodasData();
 
-        if (!trigger.getActiveTrigger() & sender.isOp()) {
+        if (!trigger.activeTrigger & sender.isOp()) {
             trigger.setActiveTrigger(true);
             sender.sendMessage(weaponsActive);
             return true;
@@ -25,7 +25,7 @@ public class MeliodasCOMMAND implements CommandExecutor {
             sender.sendMessage(weaponsDisActive);
         }
 
-        return trigger.getActiveTrigger();
+        return trigger.activeTrigger;
     }
 
 

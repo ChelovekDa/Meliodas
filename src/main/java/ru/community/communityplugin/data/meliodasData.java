@@ -28,6 +28,29 @@ public class meliodasData {
         eventsTimeHistory.add(0);
     }
 
+    public void clear(Player damager, Entity entity) {
+        ArrayList<Integer> indexes = new ArrayList<>();
+        ArrayList<Entity> localTargets = targetsHistory;
+
+        for (int i = 0; i < damagerHistory.size(); i++) {
+            int index = localTargets.indexOf(entity);
+
+            if (index >= 0) {
+                indexes.add(index);
+                localTargets.remove(index);
+            }
+            if (index == -1) break;
+        }
+
+        for (int i = 0; i < indexes.size(); i++) {
+            damageHistory.remove(indexes.get(i));
+            damagerHistory.remove(indexes.get(i));
+            targetsHistory.remove(indexes.get(i));
+            eventsTimeHistory.remove(indexes.get(i));
+        }
+
+    }
+
     public void pull() {
         pullMeliodasData();
     }
@@ -50,7 +73,7 @@ public class meliodasData {
 
     public void addToTargetsHistory(Entity target) { this.targetsHistory.add(target); }
 
-    public void fullStrike(Player player, double attack, Entity entity) throws InterruptedException {
+    public void fullCounter(Player player, double attack, Entity entity) throws InterruptedException {
         double damage = attack * 2.5;
         Math.round(damage);
 
@@ -63,7 +86,7 @@ public class meliodasData {
             target.damage(damage, player);
             World world = entity.getWorld();
             //world.createExplosion(location, power);
-            world.createExplosion(location, 4F);
+            world.createExplosion(location, 2F);
 
             System.out.println("FullStrike stats:\n*Damage: " + damage + "\n*Power of explosion: " + powerExplosion(damage) + "\n*Target: " + target.getName() + "\n*Damager: " + player.getName());
             Bukkit.broadcastMessage("Игрок " + player.getName() + " использовал способность <Мстительное отражение>!\nАтака нанесла противнику " + damage + " единиц урона!");
@@ -76,22 +99,22 @@ public class meliodasData {
     private float powerExplosion(double damage) {
         float result = 0;
 
-        if (damage <= 50) result += 1F;
-        if (damage <= 100) result += 3F;
-        if (damage <= 150) result += 4F;
-        if (damage <= 180) result += 6F;
-        if (damage <= 200) result += 8F;
-        if (damage <= 230) result += 10F;
-        if (damage <= 250) result += 11F;
-        if (damage <= 290) result += 15F;
-        if (damage <= 300) result += 17F;
-        if (damage <= 350) result += 20F;
-        if (damage <= 380) result += 22F;
-        if (damage <= 400) result += 24F;
-        if (damage <= 450) result += 28F;
-        if (damage <= 500) result += 32F;
-        if (damage <= 600) result += 35F;
-        if (damage > 601) result += 40F;
+        if (damage <= 50) result = 1F;
+        if (damage <= 100) result = 3F;
+        if (damage <= 150) result = 4F;
+        if (damage <= 180) result = 6F;
+        if (damage <= 200) result = 8F;
+        if (damage <= 230) result = 10F;
+        if (damage <= 250) result = 11F;
+        if (damage <= 290) result = 15F;
+        if (damage <= 300) result = 17F;
+        if (damage <= 350) result = 20F;
+        if (damage <= 380) result = 22F;
+        if (damage <= 400) result = 24F;
+        if (damage <= 450) result = 28F;
+        if (damage <= 500) result = 32F;
+        if (damage <= 600) result = 35F;
+        if (damage > 601) result = 40F;
         else {
             result += 4F;
         }
