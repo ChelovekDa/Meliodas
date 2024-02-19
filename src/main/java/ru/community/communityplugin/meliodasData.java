@@ -1,4 +1,4 @@
-package ru.community.communityplugin.data;
+package ru.community.communityplugin;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -6,7 +6,6 @@ import org.bukkit.World;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
-
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
@@ -14,18 +13,14 @@ public class meliodasData {
 
     public boolean activeTrigger = false;
 
-    private ArrayList<Double> damageHistory = new ArrayList<>();
-    private ArrayList<Player> damagerHistory = new ArrayList<>();
-    private ArrayList<Entity> targetsHistory = new ArrayList<>();
-    private ArrayList<Integer> eventsTimeHistory = new ArrayList<>();
-
-    public ArrayList<Integer> getEventsTimeHistory() { return eventsTimeHistory; }
+    public ArrayList<Double> damageHistory = new ArrayList<>();
+    public ArrayList<Player> damagerHistory = new ArrayList<>();
+    public ArrayList<Entity> targetsHistory = new ArrayList<>();
 
     private void pullMeliodasData() {
         damageHistory.add(0D);
         damagerHistory.add(null);
         targetsHistory.add(null);
-        eventsTimeHistory.add(0);
     }
 
     public void clear(Player damager, Entity entity) {
@@ -46,32 +41,27 @@ public class meliodasData {
             damageHistory.remove(indexes.get(i));
             damagerHistory.remove(indexes.get(i));
             targetsHistory.remove(indexes.get(i));
-            eventsTimeHistory.remove(indexes.get(i));
         }
 
     }
 
-    public void pull() {
+    public boolean pull() {
         pullMeliodasData();
+
+        if (damageHistory.indexOf(0) == -1 || damagerHistory.indexOf(null) == -1 || targetsHistory.indexOf(null) == -1) {
+            System.out.println("\nERROR\nlen: " + damagerHistory.size() + damageHistory.size() + targetsHistory.size());
+            System.out.println("damagerHistory: ".toUpperCase() + damagerHistory);
+            System.out.println("damageHistory: ".toUpperCase() + damageHistory);
+            System.out.println("targetsHistory: ".toUpperCase() + targetsHistory);
+            return false;
+        }
+
+        return true;
     }
 
     public void setActiveTrigger(boolean value) {
         this.activeTrigger = value;
     }
-
-    public ArrayList<Double> getDamageHistory() { return this.damageHistory; }
-
-    public ArrayList<Player> getDamagerHistory() { return this.damagerHistory; }
-
-    public ArrayList<Entity> getTargetsHistory() { return this.targetsHistory; }
-
-    public void addToEventsTimeHistory(int time) { this.eventsTimeHistory.add(time); }
-
-    public void addToDamageHistory(double target) { this.damageHistory.add(target); }
-
-    public void addToDamagerHistory(Player target) { this.damagerHistory.add(target); }
-
-    public void addToTargetsHistory(Entity target) { this.targetsHistory.add(target); }
 
     public void fullCounter(Player player, double attack, Entity entity) throws InterruptedException {
         double damage = attack * 2.5;

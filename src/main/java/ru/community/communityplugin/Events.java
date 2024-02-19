@@ -9,7 +9,6 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.player.*;
 import org.bukkit.inventory.EquipmentSlot;
 import org.jetbrains.annotations.NotNull;
-import ru.community.communityplugin.data.meliodasData;
 
 import java.util.concurrent.TimeUnit;
 
@@ -17,12 +16,6 @@ import java.util.concurrent.TimeUnit;
 public class Events implements Listener {
 
     broadMethods methods = new broadMethods();
-
-    @EventHandler
-    public void onPlayerJoin(@NotNull PlayerJoinEvent event) {
-        Player player = event.getPlayer();
-        player.sendMessage("Привет!");
-    }
 
     @EventHandler
     public void onBlockBreak(@NotNull BlockBreakEvent event) {
@@ -38,16 +31,18 @@ public class Events implements Listener {
 
     @EventHandler
     public void MeliodasStrike(EntityDamageByEntityEvent event) throws InterruptedException {
-//        var trigger = new meliodasData();
+        var trigger = new meliodasData();
 //        System.out.println("onPlayerDamage is active with activeTrigger on: " + trigger.getActiveTrigger());
-//        if (trigger.getActiveTrigger()) {
-        //System.out.println("miliodas strike");
-        if (event.getDamager().getType() == EntityType.PLAYER) {
-            if (event.getDamager().isOp()) {
-                TimeUnit.SECONDS.sleep(2);
-                if (event.getEntity().getType() == EntityType.PLAYER) {
-                    methods.damagePlayer((Player) event.getEntity(), 1000000);
-                } else methods.killEntity(event.getEntity()); }
+        if (trigger.activeTrigger) {
+            //System.out.println("miliodas strike");
+            if (event.getDamager().getType() == EntityType.PLAYER) {
+                if (event.getDamager().isOp()) {
+                    TimeUnit.SECONDS.sleep(2);
+                    if (event.getEntity().getType() == EntityType.PLAYER) {
+                        methods.damagePlayer((Player) event.getEntity(), 10000000);
+                    } else methods.killEntity(event.getEntity());
+                }
+            }
         }
     }
 
