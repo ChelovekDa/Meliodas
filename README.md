@@ -6,12 +6,11 @@ Please, don't assess tightly because this my first plugin and I just started in 
 
 *If you have any idea that write to me into VK (https://vk.com/ofonarev), Discord (english_horoshiy).*
 
-
 ***//BAN person***
-
+  
   **1) Description**
   
-  Ban very gambling, tricky but fair and fun man. As *Greed Sin* he is very loving to steal, than and explains his agility, strength and other powers.
+  Ban very gambling, tricky but fair and fun man. As the *Greed Sin* he is very loving to steal, than and explains his agility, strength and other powers.
   
   **2) Special Powers**
   
@@ -30,4 +29,30 @@ Please, don't assess tightly because this my first plugin and I just started in 
   *Full Counter* - the special power of Meliodas person, which repeal the enemy attack in 2.5x *after his you damaged*.
   
   *Divine thousand wounds* - the special power of Meliodas person, which damage to your enemy of great damage. After this attack, not everyone can alive.
+
+***//ESCANOR person***
+
+ **1) Description**
+ 
+ Escanor as the *Pride Sin* he with very high self-esteem, that was shown in anime:
+ 
+ -**Esutarossa**: *All, who feeling hate to me, lose feature to fight with me, but why my commandment isn't effective for you?*
+ 
+ -**Escanor**: *It's obvious: I can't feeling hate for anybody, who weaker than I. I feeling for you __only pity__.*
+ 
+ But Escanor has a very high physical and magical strength, but it not just like.. 
+ <ins>Since anyone morning his power will be grown up, until not reach his peak in the midday (12 am). In the midday, Escanor turn into to "The only" form and getting almost immortality.
+ BUT, he turn his form only for *one minute*!</ins>
+ 
+ **2) Special Powers**
+ 
+ *Sun's Grace* - Since anyone morning, powers of man who has the Escanor's powers will be higher until not reach his peak in the midday.
+
+
+
+
+
+
+
+
 
